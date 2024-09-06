@@ -301,7 +301,7 @@ const externalContracts = {
       },
     },
     BatchGraduationNFT: {
-      address: "0x0",
+      address: "0x12b6ec1EeE38CaDc477CDC2e82840F258e1bA5DB",
       abi: [
         {
           inputs: [
