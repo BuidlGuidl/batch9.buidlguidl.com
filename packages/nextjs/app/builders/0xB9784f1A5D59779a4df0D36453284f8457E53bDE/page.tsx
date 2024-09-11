@@ -16,7 +16,6 @@ const Page: NextPage = () => {
   return (
     <>
       <div className="w-full rounded-lg overflow-hidden max-w-6xl mx-auto shadow-2xl flex flex-col my-10 animate-gradient-x">
-        {/* image column */}
         <div className="w-full  bg-gradient-to-r from-warning to-error dark:from-warning dark:to-error">
           <div className="flex justify-center items-center h-full">
             <div className="w-80 h-80 overflow-hidden rounded-full shadow-lg">
@@ -25,7 +24,6 @@ const Page: NextPage = () => {
           </div>
         </div>
 
-        {/* content column */}
         <div className="w-full bg-gradient-to-r from-secondary to-base-100 dark:from-secondary dark:to-base-300 flex flex-col justify-center p-8">
           <div className="flex flex-col  items-center text-center">
             <h1 className="text-5xl font-semibold">
