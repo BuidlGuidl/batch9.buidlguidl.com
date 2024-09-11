@@ -14,6 +14,16 @@ const nextConfig = {
     config.externals.push("pino-pretty", "lokijs", "encoding");
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.miladymaker.net",
+        port: "",
+        pathname: "/milady/**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
