@@ -20,12 +20,16 @@ const Home: NextPage = () => {
             <span className="block text-4xl font-bold">Batch 9</span>
           </h1>
           <p className="text-center text-lg">Get started by taking a look at your batch GitHub repository.</p>
-          {checkedInCounter !== undefined && (
-            <p className="text-lg flex gap-2 justify-center">
-              <span className="font-bold">Checked in builders count: {checkedInCounter?.toString()}</span>
-              <span>To Be Implemented</span>
-            </p>
-          )}
+          <div className="flex justify-center items-center">
+            {checkedInCounter === undefined ? (
+              <div className="w-64 h-8 bg-base-300 animate-pulse rounded-lg"></div>
+            ) : (
+              <p className="text-lg flex gap-2 justify-center">
+                <span className="font-bold">Checked in builders count:</span>
+                <span>{checkedInCounter.toString()}</span>
+              </p>
+            )}
+          </div>
         </div>
 
         <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
