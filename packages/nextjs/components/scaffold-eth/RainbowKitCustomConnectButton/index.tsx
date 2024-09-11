@@ -4,6 +4,7 @@
 import { Balance } from "../Balance";
 import { AddressInfoDropdown } from "./AddressInfoDropdown";
 import { AddressQRCodeModal } from "./AddressQRCodeModal";
+import { BatchDetails } from "./BatchDetails";
 import { WrongNetworkDropdown } from "./WrongNetworkDropdown";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Address } from "viem";
@@ -43,6 +44,9 @@ export const RainbowKitCustomConnectButton = () => {
 
               return (
                 <>
+                  <div className="flex flex-col items-center mr-1">
+                    <BatchDetails address={account.address as Address} />
+                  </div>
                   <div className="flex flex-col items-center mr-1">
                     <Balance address={account.address as Address} className="min-h-0 h-auto" />
                     <span className="text-xs" style={{ color: networkColor }}>
