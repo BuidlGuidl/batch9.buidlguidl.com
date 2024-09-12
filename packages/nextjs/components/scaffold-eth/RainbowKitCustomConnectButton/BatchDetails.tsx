@@ -8,8 +8,6 @@ type BatchProps = {
 const zeroAddress = "0x0000000000000000000000000000000000000000";
 
 export const BatchDetails = ({ address }: BatchProps) => {
-  console.log(address);
-
   const { data: allowListed, isLoading: allowListLoading } = useScaffoldReadContract({
     contractName: "BatchRegistry",
     functionName: "allowList",
@@ -21,7 +19,6 @@ export const BatchDetails = ({ address }: BatchProps) => {
     functionName: "yourContractAddress",
     args: [address],
   });
-  console.log(allowListed, checkedIn);
 
   return (
     <>
