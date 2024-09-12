@@ -6,8 +6,8 @@ import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
-  title: "Debug Contracts",
-  description: "Debug your deployed 🏗 Scaffold-ETH 2 contracts in an easy way",
+  title: "Danitome24 builder page",
+  description: "Builder page for danitome24 with a little bio and social links.",
 });
 
 const Builder: NextPage = () => {
