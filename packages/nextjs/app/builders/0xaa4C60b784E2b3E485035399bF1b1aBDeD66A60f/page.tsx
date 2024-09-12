@@ -10,7 +10,7 @@ export const metadata = getMetadata({
   description: "Debug your deployed 🏗 Scaffold-ETH 2 contracts in an easy way",
 });
 
-const Debug: NextPage = () => {
+const Builder: NextPage = () => {
   return (
     <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
       <div className="text-center">
@@ -53,4 +53,4 @@ const Debug: NextPage = () => {
   );
 };
 
-export default Debug;
+export default Builder;
