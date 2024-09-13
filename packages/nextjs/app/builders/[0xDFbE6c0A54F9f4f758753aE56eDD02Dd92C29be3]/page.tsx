@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { NextPage } from "next";
+import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
@@ -11,6 +12,9 @@ const FedevPage: NextPage = () => {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center">
       <header className="text-center my-10">
+        <div className="w-24 h-24 rounded-full mx-auto mb-4">
+          <BlockieAvatar address="0xDFbE6c0A54F9f4f758753aE56eDD02Dd92C29be3" size={120} />
+        </div>
         <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100">Hi! I&#39;m Fedev 👋</h1>
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">A software developer from Argentina 🇦🇷.</p>
       </header>
