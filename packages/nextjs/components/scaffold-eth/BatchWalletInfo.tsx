@@ -36,7 +36,7 @@ export const BatchWalletInfo = () => {
   }
 
   return (
-    <div className="fixed top-16 right-4 bg-base-300  p-4 rounded shadow-lg">
+    <div className="bg-base-300  p-4 rounded shadow-lg">
       <p className="text-lg m-0">{textToShow.title}</p>
       <p className="text-sm m-0">{textToShow.message}</p>
     </div>
