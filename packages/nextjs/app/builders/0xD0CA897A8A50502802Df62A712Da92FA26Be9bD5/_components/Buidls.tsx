@@ -40,6 +40,7 @@ export const Buidls = () => {
       {buidlsData.map((buidl, index) => (
         <div key={index} className="bg-gray-200/60 rounded-lg p-4">
           <a href={buidl.url} target="_blank" rel="noopener noreferrer">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={buidl.image} alt={buidl.name} className="rounded-lg" />
             <p className="text-center mb-0 mt-2">{buidl.name}</p>
           </a>
