@@ -14,6 +14,9 @@ const nextConfig = {
     config.externals.push("pino-pretty", "lokijs", "encoding");
     return config;
   },
+  images: {
+    domains: ["assets.aceternity.com"]
+  },
 };
 
 module.exports = nextConfig;
