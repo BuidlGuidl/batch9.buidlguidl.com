@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { NextPage } from "next";
 import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
 
@@ -71,7 +72,13 @@ const Builders: NextPage = () => {
             <div className="grid grid-cols-3 gap-6">
               {mentors.map((mentor, i) => (
                 <div key={i} className="text-center">
-                  <img className="w-24 h-24 rounded-full mx-auto" src={mentor.imgUrl} alt={mentor.name} />
+                  <Image
+                    width={100}
+                    height={100}
+                    className="w-24 h-24 rounded-full mx-auto"
+                    src={mentor.imgUrl}
+                    alt={mentor.name}
+                  />
                   <a
                     href={mentor.link}
                     className="mt-2 block text-blue-600 hover:underline font-medium"
@@ -97,7 +104,13 @@ const Builders: NextPage = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img className="w-24 h-24 rounded-full mx-auto" src={builder.image} alt={builder.link} />
+                    <Image
+                      width={100}
+                      height={100}
+                      className="w-24 h-24 rounded-full mx-auto"
+                      src={builder.image}
+                      alt={builder.link}
+                    />
                     See profile
                   </a>
                 </div>
