@@ -1,9 +1,9 @@
 "use client";
 
-import { ProfilePicture } from "./_components/ProfilePicture";
+import { BuilderPicture, MentorPicture } from "./_components/index";
 import type { NextPage } from "next";
 import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
-import { Builder } from "~~/types/builders";
+import { Builder, Mentor } from "~~/types/builders";
 
 const getRandomGender = () => {
   return Math.random() < 0.5 ? "men" : "women";
@@ -16,7 +16,19 @@ const getRandomUserImage = () => {
   return `https://randomuser.me/api/portraits/${randomGender}/${randomInt}.jpg`;
 };
 
-const mentors: Builder[] = [
+const getBuilderFromEvent = (event: any): Builder => {
+  const args = event.args;
+
+  const person: Builder = {
+    image: getRandomUserImage(),
+    link: "builders/" + args.builder,
+    checkedIn: true,
+  };
+
+  return person;
+};
+
+const mentors: Mentor[] = [
   {
     name: "Eda",
     image: "https://avatars.githubusercontent.com/u/22100698?v=4",
@@ -36,18 +48,6 @@ const mentors: Builder[] = [
     checkedIn: false,
   },
 ];
-
-const getBuilderFromEvent = (event: any): Builder => {
-  const args = event.args;
-
-  const person: Builder = {
-    image: getRandomUserImage(),
-    link: "builders/" + args.builder,
-    checkedIn: true,
-  };
-
-  return person;
-};
 
 const Builders: NextPage = () => {
   const { data: events } = useScaffoldEventHistory({
@@ -80,7 +80,7 @@ const Builders: NextPage = () => {
             <h2 className="text-2xl font-semibold text-center mb-6">Mentors</h2>
             <div className="grid grid-cols-3 gap-6">
               {mentors.map((mentor, i) => (
-                <ProfilePicture builder={mentor} key={i} />
+                <MentorPicture person={mentor} key={i} />
               ))}
             </div>
           </div>
@@ -90,7 +90,7 @@ const Builders: NextPage = () => {
             <p className="text-sm font-bold text-center mb-8">Builders that checkedIn: {buildersCheckedIn}</p>
             <div className="grid grid-cols-5 gap-20">
               {builders.map((builder, i) => (
-                <ProfilePicture builder={builder} key={i} />
+                <BuilderPicture person={builder} key={i} />
               ))}
             </div>
           </div>
