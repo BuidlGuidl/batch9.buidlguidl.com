@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { BuilderPicture, MentorPicture } from "./_components/index";
 import type { NextPage } from "next";
 import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
@@ -50,7 +51,10 @@ const mentors: Mentor[] = [
 ];
 
 const Builders: NextPage = () => {
-  const { data: events } = useScaffoldEventHistory({
+  const [buildersCheckedIn, setBuildersCheckedIn] = useState(0);
+  const [builders, setBuilders] = useState<Builder[]>([]);
+
+  const { data: events, isLoading: isLoadingEvents } = useScaffoldEventHistory({
     contractName: "BatchRegistry",
     eventName: "CheckedIn",
     fromBlock: 31231n,
@@ -61,13 +65,12 @@ const Builders: NextPage = () => {
     receiptData: true,
   });
 
-  let buildersCheckedIn = 0;
-  let builders: Builder[] = [];
-
-  if (events != undefined) {
-    buildersCheckedIn = events.length;
-    builders = events.map(e => getBuilderFromEvent(e));
-  }
+  useEffect(() => {
+    if (!isLoadingEvents && events != undefined) {
+      setBuildersCheckedIn(events.length);
+      setBuilders(events.map(e => getBuilderFromEvent(e)));
+    }
+  }, [isLoadingEvents, events]);
 
   return (
     <>
