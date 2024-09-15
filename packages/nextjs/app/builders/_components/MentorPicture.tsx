@@ -3,12 +3,11 @@ import { Mentor } from "~~/types/builders";
 
 type ProfilePictureProps = {
   person: Mentor;
-  key: number;
 };
 
-export const MentorPicture = ({ person, key }: ProfilePictureProps) => {
+export const MentorPicture = ({ person }: ProfilePictureProps) => {
   return (
-    <div key={key} className="text-center">
+    <div className="text-center">
       <a href={person.link} className="link" target="_blank" rel="noopener noreferrer">
         <Image
           width={100}
