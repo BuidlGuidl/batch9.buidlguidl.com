@@ -42,5 +42,14 @@
   },
   "engines": {
     "node": ">=18.17.0"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.17.7",
+    "@tabler/icons-react": "^3.16.0",
+    "@types/three": "^0.168.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.5.4",
+    "tailwind-merge": "^2.5.2",
+    "three": "^0.168.0"
   }
 }
