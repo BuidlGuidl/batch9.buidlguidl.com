@@ -8,6 +8,7 @@ import {
   IconHome,
   IconTower,
 } from "@tabler/icons-react";
+import type { NextPage } from "next";
 import { Address } from "~~/components/scaffold-eth";
 
 const links = [
@@ -43,7 +44,7 @@ const links = [
   },
 ];
 
-const NextPage = () => {
+const STYLESPage: NextPage = () => {
   return (
     <div>
       <div className="dark:bg-zinc-900 bg-zinc-100 text-zinc-100">
@@ -67,4 +68,4 @@ const NextPage = () => {
   );
 };
 
-export default NextPage;
+export default STYLESPage;

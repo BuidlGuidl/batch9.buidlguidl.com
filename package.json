@@ -44,7 +44,6 @@
     "node": ">=18.17.0"
   },
   "dependencies": {
-    "@formkit/auto-animate": "^0.8.2",
     "@react-three/fiber": "^8.17.7",
     "@tabler/icons-react": "^3.16.0",
     "@types/three": "^0.168.0",

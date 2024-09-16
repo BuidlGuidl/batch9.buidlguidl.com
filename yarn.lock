@@ -831,13 +831,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formkit/auto-animate@npm:^0.8.2":
-  version: 0.8.2
-  resolution: "@formkit/auto-animate@npm:0.8.2"
-  checksum: c8233a9dda70d4b40f1239bb1b0d60ebf8187553e680f1cbde4f28f329b9cf12d0eb4cca99d5adc620087c1f1e0fb1d44909db9bd0ef87d521b51e69d331ae56
-  languageName: node
-  linkType: hard
-
 "@heroicons/react@npm:^2.0.11":
   version: 2.0.18
   resolution: "@heroicons/react@npm:2.0.18"
@@ -12784,7 +12777,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "se-2@workspace:."
   dependencies:
-    "@formkit/auto-animate": ^0.8.2
     "@react-three/fiber": ^8.17.7
     "@tabler/icons-react": ^3.16.0
     "@types/three": ^0.168.0
