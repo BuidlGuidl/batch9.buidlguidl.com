@@ -1,8 +1,5 @@
-/**
- * Note: Use position fixed according to your needs
- * Desktop navbar is better positioned at the bottom
- * Mobile navbar is better positioned at bottom right.
- **/
+"use client";
+
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { cn } from "../_lib/utils";

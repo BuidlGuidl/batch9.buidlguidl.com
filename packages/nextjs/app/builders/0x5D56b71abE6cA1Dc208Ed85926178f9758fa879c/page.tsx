@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import { BackgroundLines } from "./_components/bg-lines";
 import { FloatingDock } from "./_components/floating_bar";
 import {
@@ -46,7 +43,7 @@ const links = [
   },
 ];
 
-const STYLESProfilePage = () => {
+const NextPage = () => {
   return (
     <div>
       <div className="dark:bg-zinc-900 bg-zinc-100 text-zinc-100">
@@ -70,4 +67,4 @@ const STYLESProfilePage = () => {
   );
 };
 
-export default STYLESProfilePage;
+export default NextPage;
