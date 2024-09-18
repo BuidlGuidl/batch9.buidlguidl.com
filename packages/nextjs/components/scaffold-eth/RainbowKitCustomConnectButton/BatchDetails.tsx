@@ -5,6 +5,12 @@ type BatchProps = {
   address: Address;
 };
 
+const TEXT_COMBINATIONS: Record<string, Text> = {
+  CHECKED_IN: { title: "", message: "You are an up to date builder🥇" },
+  NOT_CHECKED_IN: { title: "Hey builder 🏗️!", message: "Remember to check in :)" },
+  NOT_ALLOWED: { title: "Oops!", message: "Reach us to be a builder" },
+};
+
 type Text = {
   title: string;
   message: string;
@@ -28,15 +34,15 @@ export const BatchDetails = ({ address }: BatchProps) => {
   const hasCheckedIn = zeroAddress !== checkedIn;
 
   const getTextToShow = (): Text => {
-    if (isAllowListed) {
-      if (hasCheckedIn) {
-        return { title: "", message: "You are an up to date builder🥇" };
-      }
-      return { title: "Hey builder 🏗️!", message: "Remember to check in :)" };
+    switch (true) {
+      case !isAllowListed:
+        return TEXT_COMBINATIONS.NOT_ALLOWED;
+      case hasCheckedIn:
+        return TEXT_COMBINATIONS.CHECKED_IN;
+      default:
+        return TEXT_COMBINATIONS.NOT_CHECKED_IN;
     }
-    return { title: "Oops!", message: "Reach us to be a builder" };
   };
-
   const textToShow = getTextToShow();
 
   if (allowListLoading || checkedInLoading) {
