@@ -63,7 +63,7 @@ const Home: NextPage = () => {
         </div>
 
         {/* Member Status */}
-        <div className="w-[16rem] sm:w-[34rem] text-center tracking-widest py-5 mt-6 text-st_cyan font-semibold rounded-xl border border-zinc-500 uppercase shadow-sm">
+        <div className="w-[16rem] sm:w-[34rem] text-center tracking-widest py-5 mt-6 text-st_cyan font-semibold rounded-xl border border-zinc-500 uppercase shadow-sm hover:bg-zinc-300 dark:hover:bg-zinc-800 transition-all">
           Batch Member {isAllowed ? "✅" : "❌"}
         </div>
 
@@ -77,17 +77,19 @@ const Home: NextPage = () => {
         <div className="flex flex-col sm:flex-row sm:gap-8">
           {/* Debug Contract Card */}
           <div className="shadow-sm border rounded-xl w-[16rem] h-[12rem] font-light mt-6 border-zinc-500 flex flex-col">
-            <div className="w-full flex items-center justify-center flex-grow-[5]">
+            <div className="w-full flex items-center justify-center flex-grow-[5] dark:hover:bg-zinc-800 hover:bg-zinc-300 transition-all rounded-t-xl">
               <p className="px-4">
                 Tinker with your smart contract using the{" "}
-                <Link href="/debug" target="_blank" passHref className="link">
+                <Link href="/debug" target="_blank" passHref className="link transition-all">
                   Debug Contracts
                 </Link>{" "}
                 tab.
               </p>
             </div>
 
-            <div className="border-t border-zinc-500 flex-grow">
+            <hr className="border-t border-zinc-500" />
+
+            <div className="hover:bg-st_cyan/10 rounded-b-xl transition-all border-zinc-500 flex-grow">
               <Link href="/debug" target="_blank" passHref className="flex items-center justify-between h-full px-4">
                 <p className="font-medium flex flex-col items-center justify-center">Try it out..</p>
 
@@ -107,7 +109,7 @@ const Home: NextPage = () => {
 
           {/* Debug Contract Card */}
           <div className="shadow-sm border rounded-xl w-[16rem] h-[12rem] font-light mt-6 border-zinc-500 flex flex-col">
-            <div className="w-full flex items-center justify-center flex-grow-[5]">
+            <div className="w-full dark:hover:bg-zinc-800 hover:bg-zinc-300 transition-all rounded-t-xl flex items-center justify-center flex-grow-[5]">
               <p className="px-4">
                 Explore your local transactions with the{" "}
                 <Link href="/blockexplorer" passHref className="link">
@@ -117,7 +119,9 @@ const Home: NextPage = () => {
               </p>
             </div>
 
-            <div className="border-t border-zinc-500 flex-grow">
+            <hr className="border-t border-zinc-500" />
+
+            <div className="hover:bg-st_cyan/10 rounded-b-xl transition-all border-zinc-500 flex-grow">
               <Link
                 href="/blockexplorer"
                 target="_blank"
