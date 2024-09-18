@@ -17,17 +17,11 @@ const getRandomUserImage = () => {
   return `https://randomuser.me/api/portraits/${randomGender}/${randomInt}.jpg`;
 };
 
-const getBuilderFromEvent = (event: any): Builder => {
-  const args = event.args;
-
-  const person: Builder = {
-    image: getRandomUserImage(),
-    link: "builders/" + args.builder,
-    checkedIn: true,
-  };
-
-  return person;
-};
+const getBuilderFromEvent = (event: any): Builder => ({
+  image: getRandomUserImage(),
+  link: "builders/" + event.args.builder,
+  checkedIn: true,
+});
 
 const mentors: Mentor[] = [
   {
