@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Builder } from "~~/types/builders";
+import Link from 'next/link';
 
 type ProfilePictureProps = {
   person: Builder;
@@ -8,7 +9,7 @@ type ProfilePictureProps = {
 export const BuilderPicture = ({ person }: ProfilePictureProps) => {
   return (
     <div className="text-center">
-      <a href={person.link} className="link" target="_blank" rel="noopener noreferrer">
+      <Link href={person.link} className="link" rel="noopener noreferrer">
         <Image
           width={100}
           height={100}
@@ -17,7 +18,7 @@ export const BuilderPicture = ({ person }: ProfilePictureProps) => {
           alt={person.link}
         />
         See profile
-      </a>
+      </Link>
     </div>
   );
 };

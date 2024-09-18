@@ -27,19 +27,19 @@ const mentors: Mentor[] = [
   {
     name: "Eda",
     image: "https://avatars.githubusercontent.com/u/22100698?v=4",
-    link: "/builders/0x000000",
+    link: "https://github.com/edakturk14",
     checkedIn: false,
   },
   {
     name: "Derrek",
     image: "https://avatars.githubusercontent.com/u/80121818?v=4",
-    link: "/builders/0x000000",
+    link: "https://github.com/derrekcoleman",
     checkedIn: false,
   },
   {
     name: "Philip",
     image: "https://avatars.githubusercontent.com/u/90064316?v=4",
-    link: "/builders/0x000000",
+    link: "https://github.com/phipsae",
     checkedIn: false,
   },
 ];
