@@ -1,6 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Mentor } from "~~/types/builders";
-import Link from 'next/link';
 
 type ProfilePictureProps = {
   person: Mentor;

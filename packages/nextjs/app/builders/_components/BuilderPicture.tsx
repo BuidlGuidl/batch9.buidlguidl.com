@@ -1,6 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Builder } from "~~/types/builders";
-import Link from 'next/link';
 
 type ProfilePictureProps = {
   person: Builder;
