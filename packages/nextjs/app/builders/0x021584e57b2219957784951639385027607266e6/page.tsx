@@ -36,6 +36,32 @@ const socials = [
   },
 ];
 
+const projects = [
+  {
+    name: "Proof of X",
+    url: "https://pox.me",
+    description:
+      "Open source web3 protocol focused on internet identity and privacy. I contributed to developing the web3 software and maintaining the community. Worked with Next.js, Tailwind, and front-end smart contracts integrations.",
+  },
+  {
+    name: "Library digital credential",
+    url: "https://x.com/d4rm_/status/1722034025190023404",
+    description:
+      "Open source digital credential software created for my school’s library, built with Expo, React Native, Go, and MySQL. It was my final project for high school.",
+  },
+  {
+    name: "El Burro Podcast",
+    url: "https://youtube.com/@realburropodcast",
+    description: "Podcast that I co-created, hosted, and co-produced in 2023.",
+  },
+  {
+    name: "Technical high school catalog",
+    url: "https://github.com/catalogo-inet/catalogo-inet-front",
+    description:
+      "A map and catalog of all the technical secondary schools in Argentina, which won a contest organized by the INET (National Institute of Technological Education), where many schools from the country participated.",
+  },
+];
+
 const DantesitoPage: NextPage = () => {
   return (
     <div
@@ -68,54 +94,14 @@ const DantesitoPage: NextPage = () => {
         </ul>
         <h2 className="text-2xl font-semibold mt-8 mb-4">Past projects / contributions ↓</h2>
         <ul className="list-none text-left space-y-4">
-          <li>
-            <a
-              href="https://pox.me"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              Proof of X
-            </a>
-            : Open source web3 protocol focused on internet identity and privacy. I contributed to developing the web3
-            software and maintaining the community. Worked with Next.js, Tailwind, and front-end smart contracts
-            integrations.
-          </li>
-          <li>
-            <a
-              href="https://x.com/d4rm_/status/1722034025190023404"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              Library digital credential
-            </a>
-            : Open source digital credential software created for my school’s library, built with Expo, React Native,
-            Go, and MySQL. It was my final project for high school.
-          </li>
-          <li>
-            <a
-              href="https://youtube.com/@realburropodcast"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              El Burro Podcast
-            </a>
-            : Podcast that I co-created, hosted, and co-produced in 2023.
-          </li>
-          <li>
-            <a
-              href="https://github.com/catalogo-inet/catalogo-inet-front"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              Technical high school catalog
-            </a>
-            : A map and catalog of all the technical secondary schools in Argentina, which won a contest organized by
-            the INET (National Institute of Technological Education), where many schools from the country participated.
-          </li>
+          {projects.map(project => (
+            <li key={project.name}>
+              <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                {project.name}
+              </a>
+              : {project.description}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
