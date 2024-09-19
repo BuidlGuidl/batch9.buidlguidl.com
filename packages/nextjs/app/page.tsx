@@ -61,7 +61,7 @@ const Home: NextPage = () => {
         </div>
 
         {/* Member Status */}
-        {IsCheckIn !== zeroAddress ? (
+        {isAllowed && IsCheckIn !== zeroAddress ? (
           <Link
             href={`/builders/${connectedAddress}`}
             target="_blank"
