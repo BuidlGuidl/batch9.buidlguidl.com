@@ -4,6 +4,7 @@ module.exports = {
   plugins: [require("daisyui")],
   darkTheme: "dark",
   darkMode: ["selector", "[data-theme='dark']"],
+  // DaisyUI theme colors
   daisyui: {
     themes: [
       {

@@ -3,12 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { hardhat } from "viem/chains";
 import { CurrencyDollarIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import heartIcon from "~~/assets/heart_icon.svg";
 // import { HeartIcon } from "@heroicons/react/24/outline";
 import { SwitchTheme } from "~~/components/SwitchTheme";
 import { BuidlGuidlLogo } from "~~/components/assets/BuidlGuidlLogo";
 import { Faucet } from "~~/components/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
+import Arrow_Icon from "~~/public/arrow_icon";
+import heartIcon from "~~/public/heart_icon.svg";
 import { useGlobalState } from "~~/services/store/store";
 
 /**
@@ -21,8 +22,8 @@ export const Footer = () => {
 
   return (
     <div className="bg-zinc-100 dark:bg-zinc-950">
-      <div>
-        <div className="fixed flex justify-between items-center w-full z-10 p-4 bottom-0 left-0 pointer-events-none">
+      <div className="">
+        <div className="fixed flex justify-between items-center w-full z-10 p-4 bottom-10 md:bottom-0 left-0 pointer-events-none">
           <div className="flex flex-col md:flex-row gap-2 pointer-events-auto">
             {nativeCurrencyPrice > 0 && (
               <div>
@@ -45,8 +46,8 @@ export const Footer = () => {
           <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
         </div>
       </div>
-      <div className="max-w-2xl mx-auto text-st_gray">
-        <div className="flex justify-between mx-10">
+      <div className="max-w-lg lg:max-w-2xl mx-auto text-st_gray">
+        <div className="text-[11px] sm:text-sm lg:text-base flex gap-2 justify-between mx-4 sm:mx-10">
           <Link
             href="https://github.com/scaffold-eth/se-2"
             target="_blank"
@@ -54,32 +55,19 @@ export const Footer = () => {
             className="flex gap-2 items-center "
           >
             <p>Fork me</p>
-            <svg width="12" height="12" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M16 16.5V0.5H0V2.5H13L0 15.5L1 16.5L14 3.5V16.5H16ZM16 0.5H13V3.5H16V0.5Z"
-                fill="#868686"
-              />
-            </svg>
+            <Arrow_Icon />
           </Link>
 
           <div className="flex gap-2 items-center">
-            <p>Built with</p>
+            <p className="flex-shrink-0">Built with</p>
             <Image src={heartIcon} alt="heart icon" width={20} height={20} />
             <p>at</p>
             <Link href="https://buidlguidl.com/" target="_blank" rel="noreferrer" className="flex gap-2 items-center ">
               <BuidlGuidlLogo className="w-3 h-5 pb-1" />
               <p>BuidlGuidl</p>
             </Link>
-            <svg width="12" height="12" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M16 16.5V0.5H0V2.5H13L0 15.5L1 16.5L14 3.5V16.5H16ZM16 0.5H13V3.5H16V0.5Z"
-                fill="#868686"
-              />
-            </svg>
+
+            <Arrow_Icon />
           </div>
 
           <div className="flex items-center gap-2">
@@ -87,14 +75,7 @@ export const Footer = () => {
               Support
             </Link>
 
-            <svg width="12" height="12" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M16 16.5V0.5H0V2.5H13L0 15.5L1 16.5L14 3.5V16.5H16ZM16 0.5H13V3.5H16V0.5Z"
-                fill="#868686"
-              />
-            </svg>
+            <Arrow_Icon />
           </div>
         </div>
       </div>
