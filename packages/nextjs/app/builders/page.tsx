@@ -19,7 +19,8 @@ const getRandomUserImage = () => {
 
 const getBuilderFromEvent = (event: any): Builder => ({
   image: getRandomUserImage(),
-  link: "builders/" + event.args.builder,
+  profileLink: "builders/" + event.args.builder,
+  address: event.args.builder,
   checkedIn: true,
 });
 
@@ -27,19 +28,20 @@ const mentors: Mentor[] = [
   {
     name: "Eda",
     image: "https://avatars.githubusercontent.com/u/22100698?v=4",
-    link: "https://github.com/edakturk14",
+    profileLink: "https://github.com/edakturk14",
     checkedIn: false,
   },
   {
     name: "Derrek",
     image: "https://avatars.githubusercontent.com/u/80121818?v=4",
-    link: "https://github.com/derrekcoleman",
+    profileLink: "https://github.com/derrekcoleman",
+
     checkedIn: false,
   },
   {
     name: "Philip",
     image: "https://avatars.githubusercontent.com/u/90064316?v=4",
-    link: "https://github.com/phipsae",
+    profileLink: "https://github.com/phipsae",
     checkedIn: false,
   },
 ];

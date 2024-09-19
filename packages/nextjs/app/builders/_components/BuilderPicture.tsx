@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { Builder } from "~~/types/builders";
 
 type ProfilePictureProps = {
@@ -9,14 +9,8 @@ type ProfilePictureProps = {
 export const BuilderPicture = ({ person }: ProfilePictureProps) => {
   return (
     <div className="text-center">
-      <Link href={person.link} className="link" rel="noopener noreferrer">
-        <Image
-          width={100}
-          height={100}
-          className="w-24 h-24 rounded-full mx-auto"
-          src={person.image}
-          alt={person.link}
-        />
+      <Link href={person.profileLink} className="link" rel="noopener noreferrer">
+        <BlockieAvatar address={person.address as `0x${string}`} size={100} />
         See profile
       </Link>
     </div>

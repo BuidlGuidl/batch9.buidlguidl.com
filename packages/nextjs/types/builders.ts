@@ -1,6 +1,7 @@
 export type Builder = {
   image: string;
-  link: string;
+  profileLink: string;
+  address?: `0x${string}`;
   checkedIn: boolean;
 };
 
