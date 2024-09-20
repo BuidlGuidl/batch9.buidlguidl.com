@@ -25,8 +25,8 @@ const Home: NextPage = () => {
     functionName: "yourContractAddress",
     args: [connectedAddress],
   });
-    
-    const { data: checkedInCounter, error } = useScaffoldReadContract({
+
+  const { data: checkedInCounter, error } = useScaffoldReadContract({
     contractName: "BatchRegistry",
     functionName: "checkedInCounter",
   });
@@ -67,16 +67,17 @@ const Home: NextPage = () => {
           <p className="text-lg md:text-xl text-center lg:text-2xl xl:text-3xl">
             Get started by taking a look at your batch GitHub repository.
           </p>
+
           <div className="flex justify-center items-center">
             {checkedInCounter === undefined && !error ? (
-              <div className="w-64 h-8 bg-base-300 animate-pulse rounded-lg"></div>
+              <div className="w-64 h-8 bg-st_gray/20 animate-pulse rounded-lg"></div>
             ) : checkedInCounter ? (
-              <p className="text-lg flex gap-2 justify-center">
-                <span className="font-bold">Checked in builders count:</span>
+              <p className="flex font-semibold gap-2 justify-center">
+                <span className="">Checked in builders count:</span>
                 <span>{checkedInCounter.toString()}</span>
               </p>
             ) : (
-              <p className="text-lg flex gap-2 justify-center">
+              <p className="flex gap-2 justify-center">
                 <span className="font-bold">An error occurred, check your console for more information 👀</span>
               </p>
             )}
@@ -124,7 +125,7 @@ const Home: NextPage = () => {
         )}
 
         {/* Cards */}
-        <div className="flex flex-col sm:flex-row sm:gap-8 mb-8 sm:mb-0">
+        <div className="flex flex-col sm:flex-row sm:gap-8 mb-8">
           {/* Debug Contract Card */}
           <Card
             mainText="Tinker with your smart contract using the Debug Contracts tab."
