@@ -25,6 +25,15 @@ const Home: NextPage = () => {
     functionName: "yourContractAddress",
     args: [connectedAddress],
   });
+    
+    const { data: checkedInCounter, error } = useScaffoldReadContract({
+    contractName: "BatchRegistry",
+    functionName: "checkedInCounter",
+  });
+
+  if (error) {
+    console.log("Error fetching checkedInCounter", error);
+  }
 
   return (
     <div className="dark:bg-zinc-950 bg-zinc-200 dark:text-st_white text-st_background min-h-screen h-fit relative overflow-clip flex items-center justify-center">
@@ -58,6 +67,20 @@ const Home: NextPage = () => {
           <p className="text-lg md:text-xl text-center lg:text-2xl xl:text-3xl">
             Get started by taking a look at your batch GitHub repository.
           </p>
+          <div className="flex justify-center items-center">
+            {checkedInCounter === undefined && !error ? (
+              <div className="w-64 h-8 bg-base-300 animate-pulse rounded-lg"></div>
+            ) : checkedInCounter ? (
+              <p className="text-lg flex gap-2 justify-center">
+                <span className="font-bold">Checked in builders count:</span>
+                <span>{checkedInCounter.toString()}</span>
+              </p>
+            ) : (
+              <p className="text-lg flex gap-2 justify-center">
+                <span className="font-bold">An error occurred, check your console for more information 👀</span>
+              </p>
+            )}
+          </div>
         </div>
 
         {/* Member Status */}
