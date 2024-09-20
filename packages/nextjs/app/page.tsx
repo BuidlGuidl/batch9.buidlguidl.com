@@ -3,8 +3,17 @@
 import Link from "next/link";
 import type { NextPage } from "next";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 const Home: NextPage = () => {
+  const { data: checkedInCounter, error } = useScaffoldReadContract({
+    contractName: "BatchRegistry",
+    functionName: "checkedInCounter",
+  });
+
+  if (error) {
+    console.log("Error fetching checkedInCounter", error);
+  }
   return (
     <>
       <div className="flex items-center flex-col flex-grow pt-10">
@@ -14,10 +23,20 @@ const Home: NextPage = () => {
             <span className="block text-4xl font-bold">Batch 9</span>
           </h1>
           <p className="text-center text-lg">Get started by taking a look at your batch GitHub repository.</p>
-          <p className="text-lg flex gap-2 justify-center">
-            <span className="font-bold">Checked in builders count:</span>
-            <span>To Be Implemented</span>
-          </p>
+          <div className="flex justify-center items-center">
+            {checkedInCounter === undefined && !error ? (
+              <div className="w-64 h-8 bg-base-300 animate-pulse rounded-lg"></div>
+            ) : checkedInCounter ? (
+              <p className="text-lg flex gap-2 justify-center">
+                <span className="font-bold">Checked in builders count:</span>
+                <span>{checkedInCounter.toString()}</span>
+              </p>
+            ) : (
+              <p className="text-lg flex gap-2 justify-center">
+                <span className="font-bold">An error occurred, check your console for more information 👀</span>
+              </p>
+            )}
+          </div>
         </div>
 
         <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
