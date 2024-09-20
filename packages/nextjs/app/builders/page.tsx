@@ -88,7 +88,7 @@ const Builders: NextPage = () => {
             <h2 className="text-2xl font-semibold text-center mb-6">Builders 🏗</h2>
             <p className="text-sm font-bold text-center mb-8">Builders that checkedIn: {buildersCheckedIn}</p>
             <div className="grid grid-cols-5 gap-20">
-              {builders.map((builder, i) => (
+              {[...new Map(builders.map(builder => [builder.address, builder])).values()].map((builder, i) => (
                 <BuilderPicture person={builder} key={i} />
               ))}
             </div>
