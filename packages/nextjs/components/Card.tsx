@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Arrow_Icon from "~~/public/arrow_icon";
+import Arrow_Icon from "~~/components/Arrow_Icon";
 
 type Props = {
   mainText: string;

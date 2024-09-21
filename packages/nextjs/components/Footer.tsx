@@ -3,13 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { hardhat } from "viem/chains";
 import { CurrencyDollarIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import Arrow_Icon from "~~/components/Arrow_Icon";
 // import { HeartIcon } from "@heroicons/react/24/outline";
 import { SwitchTheme } from "~~/components/SwitchTheme";
 import { BuidlGuidlLogo } from "~~/components/assets/BuidlGuidlLogo";
 import { Faucet } from "~~/components/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
-import Arrow_Icon from "~~/public/arrow_icon";
-import heartIcon from "~~/public/heart_icon.svg";
 import { useGlobalState } from "~~/services/store/store";
 
 /**
@@ -60,7 +59,7 @@ export const Footer = () => {
 
           <div className="flex gap-2 items-center">
             <p className="flex-shrink-0">Built with</p>
-            <Image src={heartIcon} alt="heart icon" width={20} height={20} />
+            <Image src="/heart_icon.svg" alt="heart icon" width={20} height={20} />
             <p>at</p>
             <Link href="https://buidlguidl.com/" target="_blank" rel="noreferrer" className="flex gap-2 items-center ">
               <BuidlGuidlLogo className="w-3 h-5 pb-1" />

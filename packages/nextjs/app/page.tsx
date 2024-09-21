@@ -6,9 +6,6 @@ import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import Card from "~~/components/Card";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
-import blur_blue from "~~/public/blur_blue.svg";
-import blur_yellow from "~~/public/blur_yellow.svg";
-import punks from "~~/public/cryptopunks.png";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
@@ -39,20 +36,28 @@ const Home: NextPage = () => {
     <div className="dark:bg-zinc-950 bg-zinc-200 dark:text-st_white text-st_background min-h-screen h-fit relative overflow-clip flex items-center justify-center">
       <div className="absolute w-full h-full pointer-events-none">
         <Image
-          src={blur_yellow}
+          src="/blur_yellow.svg"
           alt="Blurred Yellow Background"
           className="absolute -top-[10%] -left-[40%] w-200 h-200 blur-2xl"
+          width={2000}
+          height={2000}
         />
       </div>
 
       <div className="absolute w-full h-full pointer-events-none">
-        <Image src={blur_blue} alt="Blurred Blue Background" className="absolute -bottom-[10%] -right-[40%] blur-2xl" />
+        <Image
+          src="/blur_blue.svg"
+          alt="Blurred Blue Background"
+          className="absolute -bottom-[10%] -right-[40%] blur-2xl"
+          width={2000}
+          height={2000}
+        />
       </div>
 
       <div className="max-w-7xl px-4 mt-8 sm:mt-0 sm:px-0 mx-auto flex flex-col items-center justify-center">
         {/* Punks BG */}
         <div className="overflow-clip">
-          <Image src={punks} alt="punks" />
+          <Image src="/cryptopunks.png" alt="punks" width={2000} height={2000} />
         </div>
 
         {/* Header / SubHeader */}
