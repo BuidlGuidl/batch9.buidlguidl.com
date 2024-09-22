@@ -23,7 +23,7 @@ export const Footer = () => {
     <div className="bg-zinc-100 dark:bg-zinc-950">
       <div className="">
         <div className="fixed flex justify-between items-center w-full z-10 p-4 bottom-10 md:bottom-0 left-0 pointer-events-none">
-          <div className="flex flex-col md:flex-row gap-2 pointer-events-auto">
+          <div className="flex flex-col 2xl:flex-row gap-2 pointer-events-auto">
             {nativeCurrencyPrice > 0 && (
               <div>
                 <div className="btn btn-primary btn-sm font-normal gap-1 cursor-auto">
@@ -42,7 +42,7 @@ export const Footer = () => {
               </>
             )}
           </div>
-          <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
+          <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end ms-2xl:self-auto" : ""}`} />
         </div>
       </div>
       <div className="max-w-lg lg:max-w-2xl mx-auto text-st_gray">

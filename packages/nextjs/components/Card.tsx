@@ -10,9 +10,7 @@ type Props = {
 const Card = ({ mainText, footerText, footerLink }: Props) => {
   return (
     <div className="shadow-sm border rounded-xl w-[16rem] h-[12rem] font-light mt-6 border-zinc-500 flex flex-col">
-      <div className="w-full flex items-center justify-center flex-grow-[5] dark:hover:bg-zinc-800 px-4 hover:bg-zinc-300 transition-all rounded-t-xl">
-        {mainText}
-      </div>
+      <div className="w-full flex items-center justify-center flex-grow-[5] px-4 rounded-t-xl">{mainText}</div>
 
       <hr className="border-t border-zinc-500" />
 

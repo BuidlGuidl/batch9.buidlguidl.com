@@ -72,21 +72,17 @@ const Home: NextPage = () => {
           <p className="text-lg md:text-xl text-center lg:text-2xl xl:text-3xl">
             Get started by taking a look at your batch GitHub repository.
           </p>
+        </div>
 
-          <div className="flex justify-center items-center">
-            {checkedInCounter === undefined && !error ? (
-              <div className="w-64 h-8 bg-st_gray/20 animate-pulse rounded-lg"></div>
-            ) : checkedInCounter ? (
-              <p className="flex font-semibold gap-2 justify-center">
-                <span className="">Checked in builders count:</span>
-                <span>{checkedInCounter.toString()}</span>
-              </p>
-            ) : (
-              <p className="flex gap-2 justify-center">
-                <span className="font-bold">An error occurred, check your console for more information 👀</span>
-              </p>
-            )}
-          </div>
+        <div className="flex justify-center items-center">
+          {checkedInCounter === undefined && !error ? (
+            <div className="w-64 h-8 bg-st_gray/20 animate-pulse rounded-lg"></div>
+          ) : checkedInCounter ? (
+            <p className="flex border border-zinc-500 p-4 rounded-full font-semibold gap-2 justify-center">
+              <span className="">Checked-in Count:</span>
+              <span>{checkedInCounter.toString()}</span>
+            </p>
+          ) : null}
         </div>
 
         {/* Member Status */}
