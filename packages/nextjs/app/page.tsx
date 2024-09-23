@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { NextPage } from "next";
@@ -10,6 +11,7 @@ import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
   const zeroAddress = "0x0000000000000000000000000000000000000000";
+  const [builderPageExists, setBuilderPageExists] = useState<boolean>(false);
 
   const { data: isAllowed } = useScaffoldReadContract({
     contractName: "BatchRegistry",
@@ -31,6 +33,23 @@ const Home: NextPage = () => {
   if (error) {
     console.log("Error fetching checkedInCounter", error);
   }
+
+  useEffect(() => {
+    const verifyBuilderPage = async (address: string) => {
+      try {
+        const response = await fetch(`/builders/${address}`);
+        setBuilderPageExists(response.status === 200);
+      } catch (error) {
+        setBuilderPageExists(false);
+      }
+    };
+
+    if (connectedAddress) {
+      verifyBuilderPage(connectedAddress);
+    } else {
+      setBuilderPageExists(false);
+    }
+  }, [connectedAddress]);
 
   return (
     <div className="dark:bg-zinc-950 bg-zinc-200 dark:text-st_white text-st_background min-h-screen h-fit relative overflow-clip flex items-center justify-center">
@@ -78,31 +97,34 @@ const Home: NextPage = () => {
           {checkedInCounter === undefined && !error ? (
             <div className="w-64 h-8 bg-st_gray/20 animate-pulse rounded-lg"></div>
           ) : checkedInCounter ? (
-            <p className="flex border border-zinc-500 p-4 rounded-full font-semibold gap-2 justify-center">
-              <span className="">Checked-in Count:</span>
+            <p className="flex border border-zinc-500 py-4 px-8 rounded-full font-semibold gap-2 justify-center">
+              <span className="font-medium">Checked-in count:</span>
               <span>{checkedInCounter.toString()}</span>
             </p>
           ) : null}
         </div>
 
         {/* Member Status */}
-        {isAllowed && IsCheckIn !== zeroAddress ? (
+        {builderPageExists ? (
           <Link
             href={`/builders/${connectedAddress}`}
             target="_blank"
             title="View Your Builder Page"
             className="w-[16rem] sm:w-[34rem] text-center tracking-widest py-5 mt-6 text-st_cyan font-semibold rounded-xl border border-zinc-500 uppercase shadow-sm hover:bg-zinc-300 dark:hover:bg-zinc-800 transition-all"
           >
-            Batch Member ✅
+            Batch Member {isAllowed ? "✅" : "❌"}
           </Link>
         ) : (
-          <div className="w-[16rem] sm:w-[34rem] text-center tracking-widest py-5 mt-6 text-st_cyan font-semibold rounded-xl border border-zinc-500 uppercase shadow-sm transition-all">
+          <div
+            title="No Builder Page Found"
+            className="w-[16rem] sm:w-[34rem] text-center tracking-widest py-5 mt-6 text-st_cyan font-semibold rounded-xl border border-zinc-500 uppercase shadow-sm transition-all"
+          >
             Batch Member {isAllowed ? "✅" : "❌"}
           </div>
         )}
 
         {isAllowed && IsCheckIn !== zeroAddress ? (
-          <div className="text-center italic text-zinc-400">
+          <div className="text-center italic text-zinc-500">
             <p>Cheers 🍻.. You are checked in!</p>
           </div>
         ) : (
