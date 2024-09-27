@@ -7,7 +7,7 @@ import { ShootingStars } from "./0x5D56b71abE6cA1Dc208Ed85926178f9758fa879c/_com
 import { StarsBackground } from "./0x5D56b71abE6cA1Dc208Ed85926178f9758fa879c/_components/stars-background";
 import BuilderCard from "./_components/BuilderCard";
 import type { NextPage } from "next";
-import { useScaffoldEventHistory, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
 import { Builder, Mentor } from "~~/types/builders";
 
 const getBuilderFromEvent = (event: any): Builder => ({
@@ -52,14 +52,12 @@ const Builders: NextPage = () => {
     receiptData: true,
   });
 
-  const { data: checkedInCounter } = useScaffoldReadContract({
-    contractName: "BatchRegistry",
-    functionName: "checkedInCounter",
-  });
-
   useEffect(() => {
     if (!isLoadingEvents && events != undefined) {
-      setBuilders(events.map(e => getBuilderFromEvent(e)));
+      const builderArray = events
+        .map(e => getBuilderFromEvent(e))
+        .filter(builder => builder.address !== "0x059E31Ea8A88b62FE1603CCE134eF7c1cC557395");
+      setBuilders([...new Map(builderArray.map(builder => [builder.address, builder])).values()]);
       setIsLoading(false);
     }
   }, [isLoadingEvents, events]);
@@ -73,7 +71,7 @@ const Builders: NextPage = () => {
         <Image
           src="/blur_yellow.svg"
           alt="Blurred Yellow Background"
-          className="absolute -top-[10%] -left-[40%] w-200 h-200 blur-2xl"
+          className="absolute -top-[10%] -left-[40%] w-500 h-500 opacity-20 blur-xl"
           width={2000}
           height={2000}
         />
@@ -83,7 +81,7 @@ const Builders: NextPage = () => {
         <Image
           src="/blur_blue.svg"
           alt="Blurred Blue Background"
-          className="absolute -bottom-[10%] -right-[40%] blur-2xl"
+          className="absolute -bottom-[10%] -right-[40%] w-500 h-500 opacity-20 blur-xl"
           width={2000}
           height={2000}
         />
@@ -101,13 +99,13 @@ const Builders: NextPage = () => {
 
             <div className="flex justify-center items-center">
               <p className="flex border dark:border-zinc-700 border-zinc-400 py-3 px-10 rounded-xl font-semibold gap-2 justify-center text-cyan-500">
-                <span className="font-medium flex-shrink-0">Counter: {mentors.length}</span>
+                <span className="font-medium flex-shrink-0">Mentors: {mentors.length}</span>
               </p>
             </div>
           </div>
 
           {/* Mentor Cards */}
-          <div className="grid grid-flow-row sm:grid-flow-col gap-10 lg:flex-row justify-evenly w-full border dark:border-zinc-700 border-zinc-400 rounded-xl pt-10 pb-6 px-8 sm:overflow-x-scroll scrollbar-primary">
+          <div className="grid grid-flow-row md:grid-cols-2 gap-10 xl:grid-cols-3 justify-evenly w-full border dark:border-zinc-700 border-zinc-400 rounded-xl pt-10 pb-6 px-8 sm:overflow-x-scroll scrollbar-primary">
             {mentors.map((mentor, i) => (
               <BuilderCard mentor={mentor} key={i} />
             ))}
@@ -125,9 +123,7 @@ const Builders: NextPage = () => {
 
             <div className="flex justify-center items-center">
               <p className="flex border dark:border-zinc-700 border-zinc-400 py-3 px-10 rounded-xl font-semibold gap-2 justify-center text-cyan-500">
-                <span className="font-medium flex-shrink-0">
-                  Counter: {checkedInCounter ? `${checkedInCounter}` : 0}
-                </span>
+                <span className="font-medium flex-shrink-0">Builders: {builders ? builders.length : 0}</span>
               </p>
             </div>
           </div>
@@ -138,8 +134,8 @@ const Builders: NextPage = () => {
               <div className="animate-spin rounded-full h-32 w-32 border-r-2 border-t-2 border-b-2 border-zinc-500"></div>
             </div>
           ) : (
-            <div className="grid grid-flow-row sm:grid-flow-col grid-rows-2 gap-10 lg:flex-row justify-evenly w-full border dark:border-zinc-700 border-zinc-400 rounded-xl pt-10 pb-6 px-8 sm:overflow-x-scroll scrollbar-primary">
-              {[...new Map(builders.map(builder => [builder.address, builder])).values()].map((builder, i) => (
+            <div className="grid grid-flow-row md:grid-cols-2 gap-10 xl:grid-cols-3 justify-evenly w-full border dark:border-zinc-700 border-zinc-400 rounded-xl pt-10 pb-6 px-8 sm:overflow-y-scroll scrollbar-primary">
+              {builders.map((builder, i) => (
                 <BuilderCard builder={builder} key={i} />
               ))}
             </div>

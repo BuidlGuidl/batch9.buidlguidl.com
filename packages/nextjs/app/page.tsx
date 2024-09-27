@@ -59,7 +59,7 @@ const Home: NextPage = () => {
         <Image
           src="/blur_yellow.svg"
           alt="Blurred Yellow Background"
-          className="absolute -top-[10%] -left-[40%] w-200 h-200 blur-2xl"
+          className="absolute -top-[10%] -left-[40%] w-200 h-200 opacity-50 blur-xl"
           width={2000}
           height={2000}
         />
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
         <Image
           src="/blur_blue.svg"
           alt="Blurred Blue Background"
-          className="absolute -bottom-[10%] -right-[40%] blur-2xl"
+          className="absolute -bottom-[10%] -right-[40%] opacity-50 blur-xl"
           width={2000}
           height={2000}
         />

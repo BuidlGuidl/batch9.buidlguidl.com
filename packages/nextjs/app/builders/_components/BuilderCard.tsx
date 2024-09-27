@@ -55,11 +55,12 @@ const BuilderCard = ({ mentor, builder }: Props) => {
   });
 
   useEffect(() => {
+    console.log(fetchedEnsAvatar);
     setEnsAvatar(fetchedEnsAvatar);
   }, [fetchedEnsAvatar]);
 
   return (
-    <div className="z-10 border rounded-xl h-[15rem] sm:min-w-[22rem] min-w-[17rem] w-full font-light dark:border-zinc-700 border-zinc-400 flex flex-col text-text-zinc-700 dark:text-zinc-300 shadow-md">
+    <div className="z-10 border rounded-xl h-[15rem] min-w-[17rem] w-full font-light dark:border-zinc-700 border-zinc-400 flex flex-col text-text-zinc-700 dark:text-zinc-300 shadow-md">
       <div className="w-full relative flex flex-col flex-grow-[20] rounded-t-xl">
         {banner ? (
           <Image
