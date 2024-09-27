@@ -55,7 +55,6 @@ const BuilderCard = ({ mentor, builder }: Props) => {
   });
 
   useEffect(() => {
-    console.log(fetchedEnsAvatar);
     setEnsAvatar(fetchedEnsAvatar);
   }, [fetchedEnsAvatar]);
 
