@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { normalize } from "path";
 import { getAddress, isAddress } from "viem";
 import { useEnsAvatar, useEnsName } from "wagmi";
 import Arrow_Icon from "~~/components/Arrow_Icon";
 import { Address, BlockieAvatar } from "~~/components/scaffold-eth";
+import useBuilderExist from "~~/hooks/user/useBuilderExist";
 import { Builder, Mentor } from "~~/types/builders";
 
 type Props = {
@@ -32,6 +32,7 @@ const BuilderCard = ({ mentor, builder }: Props) => {
   const [ensAvatar, setEnsAvatar] = useState<string | null>();
   const checkSumAddress = builder?.address ? getAddress(builder.address) : undefined;
   const [banner, setBanner] = useState<string>("");
+  const builderPageExists = useBuilderExist({ address: checkSumAddress });
 
   useEffect(() => {
     setBanner(getRandomBanner());
@@ -99,16 +100,29 @@ const BuilderCard = ({ mentor, builder }: Props) => {
 
       <hr className="border-t dark:border-zinc-700 border-zinc-400" />
 
-      <div className="hover:bg-st_cyan/10 rounded-b-xl duration-75 transition-all dark:border-zinc-700 border-zinc-400 flex-grow">
-        <Link
-          href={mentor ? mentor.profileLink : builder ? builder.profileLink : ""}
-          target="_blank"
-          className="flex items-center justify-between h-full px-4"
+      <div
+        className={`${
+          (mentor || builderPageExists) && "hover:bg-st_cyan/10"
+        } " rounded-b-xl duration-75 transition-all dark:border-zinc-700 border-zinc-400 flex-grow"`}
+      >
+        <div
+          className={`${
+            mentor || builderPageExists ? "cursor-pointer" : "cursor-not-allowed"
+          } flex items-center justify-between h-full px-4`}
+          onClick={() => {
+            if (mentor) {
+              window.open(mentor.profileLink, "_blank");
+            } else if (builder && builderPageExists) {
+              window.open(`/builders/${builder.address}`, "_blank");
+            } else {
+              alert("Builder page does not exist..");
+            }
+          }}
         >
           <p className="font-medium flex flex-col items-center justify-center">View Profile</p>
 
           <Arrow_Icon />
-        </Link>
+        </div>
       </div>
     </div>
   );

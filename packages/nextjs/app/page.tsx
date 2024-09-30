@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ShootingStars } from "./builders/0x5D56b71abE6cA1Dc208Ed85926178f9758fa879c/_components/shooting-stars";
@@ -9,11 +8,16 @@ import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import Card from "~~/components/Card";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import useBuilderExist from "~~/hooks/user/useBuilderExist";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
   const zeroAddress = "0x0000000000000000000000000000000000000000";
-  const [builderPageExists, setBuilderPageExists] = useState<boolean>(false);
+  const builderPageExists = useBuilderExist({ address: connectedAddress });
+
+  console.log({
+    builderPageExists,
+  });
 
   const { data: isAllowed } = useScaffoldReadContract({
     contractName: "BatchRegistry",
@@ -35,23 +39,6 @@ const Home: NextPage = () => {
   if (error) {
     console.log("Error fetching checkedInCounter", error);
   }
-
-  useEffect(() => {
-    const verifyBuilderPage = async (address: string) => {
-      try {
-        const response = await fetch(`/builders/${address}`);
-        setBuilderPageExists(response.status === 200);
-      } catch (error) {
-        setBuilderPageExists(false);
-      }
-    };
-
-    if (connectedAddress) {
-      verifyBuilderPage(connectedAddress);
-    } else {
-      setBuilderPageExists(false);
-    }
-  }, [connectedAddress]);
 
   return (
     <div className="dark:bg-zinc-950 bg-zinc-200 dark:text-st_white text-st_background min-h-screen h-fit relative overflow-clip flex items-center justify-center">
