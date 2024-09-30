@@ -30,3 +30,26 @@ p {
 .btn.btn-ghost {
   @apply shadow-none;
 }
+
+@layer utilities {
+  .scrollbar-primary::-webkit-scrollbar {
+    @apply w-1;
+  }
+  .scrollbar-primary::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .scrollbar-primary::-webkit-scrollbar-thumb {
+    @apply bg-zinc-600 rounded-xl bg-opacity-20;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  .scrollbar-idle::-webkit-scrollbar-thumb {
+    @apply bg-opacity-30;
+  }
+  .scrollbar-active::-webkit-scrollbar-thumb {
+    @apply bg-opacity-100;
+  }
+}

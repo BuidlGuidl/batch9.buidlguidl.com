@@ -81,6 +81,12 @@ module.exports = {
       },
       animation: {
         "pulse-fast": "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        gradient: "gradient 8s linear infinite",
+      },
+      keyframes: {
+        gradient: {
+          to: { "background-position": "200% center" },
+        },
       },
       colors: {
         st_background: "#101111",
