@@ -27,7 +27,7 @@ const DaniTome24Page: NextPage = () => {
         <p>
           I&apos;ve been working with Php as main language. discovered web3 development through experimenting with
           crypto. Recently, I completed some tutorials: the first one on Udemy, then Cyfin Updraft, where I heard about
-          SpeedrunEthereum.
+          Speedrun Ethereum.
         </p>
         <p>You can reach me at: </p>
       </div>
